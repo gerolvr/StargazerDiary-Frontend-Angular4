@@ -1,3 +1,39 @@
-<p>
-  navbar works!
-</p>
+<div class="container">
+
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+						aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" routerLink="/">Stargazer Diary</a>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <a routerLink="/">Home</a>
+            </li>
+						<li routerLinkActive="active">
+              <a routerLink="/telescopes">My telescopes</a>
+            </li>
+						<li routerLinkActive="active">
+              <a routerLink="/observations">My observations</a>
+            </li>
+						<li routerLinkActive="active">
+              <a routerLink="/astrodata">Astronomical Data</a>
+            </li>
+					</ul>
+					<div class="navbar-text navbar-right">
+						Welcome {{userName}} |
+              <a *ngIf="loggedIn" (click)="logout()">Logout</a>
+              <a *ngIf="!loggedIn" routerLink="/login">Login</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</div>
