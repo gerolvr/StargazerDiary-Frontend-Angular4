@@ -10,6 +10,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginService } from './services/login.service';
 import { TelescopeService } from './services/telescope.service';
 import { ObservationService } from './services/observation.service';
+import { AstrodataService } from './services/astrodata.service';
 import { DatePipe } from '@angular/common';
 
 import { AppComponent } from './app.component';
@@ -20,6 +21,8 @@ import { TelescopeComponent } from './telescope/telescope.component';
 import { AddedittelescopeComponent } from './addedittelescope/addedittelescope.component';
 import { ObservationsComponent } from './observations/observations.component';
 import { AddeditobservationsComponent } from './addeditobservations/addeditobservations.component';
+import { AstrodataComponent } from './astrodata/astrodata.component';
+import { AstrodataresultComponent } from './astrodataresult/astrodataresult.component';
 
 const routes = [
   { path: '', component: HomeComponent },
@@ -30,6 +33,7 @@ const routes = [
   { path: 'observations', component: ObservationsComponent},
   { path: 'addObservation', component: AddeditobservationsComponent},
   { path: 'editObservation/:id', component: AddeditobservationsComponent},
+  { path: 'astrodata', component: AstrodataComponent},
 ];
 
 @NgModule({
@@ -41,7 +45,9 @@ const routes = [
     TelescopeComponent,
     AddedittelescopeComponent,
     ObservationsComponent,
-    AddeditobservationsComponent
+    AddeditobservationsComponent,
+    AstrodataComponent,
+    AstrodataresultComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +66,8 @@ const routes = [
     LoginService,
     TelescopeService,
     ObservationService,
-    DatePipe
+    DatePipe,
+    AstrodataService
   ],
   bootstrap: [AppComponent]
 })

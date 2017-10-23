@@ -1,0 +1,18 @@
+<p *ngIf=!searchComplete>
+  Looking for {{search}}, please wait ...
+</p>
+
+<div *ngIf=searchCompletedSuccessfully>
+    <h1>{{astroDataSearchResult.astroObjectName}},  {{astroDataSearchResult.astroObjectType}}</h1>
+    <p style="white-space: pre-line">{{astroDataSearchResult.astroObjectCoordinates}}</p>
+		<p>Use Mouse left-click+move to move the maps and the scrollwheel to zoom in/out</p>
+		  <iframe width="80%" height="400" frameborder="0" scrolling="no"
+			marginheight="0" marginwidth="0" [src]="sanitizedPlanetariumUrl"
+			allowtransparency="true"></iframe>
+ <iframe width="80%" height="400" frameborder="0" scrolling="no"
+			marginheight="0" marginwidth="0" [src]="sanitizedWhiskySkyUrl"
+			allowtransparency="true"></iframe>
+	</div>
+  <div *ngIf="astroObjectNotFound" class="alert alert-danger">
+    <p>{{search}} not found, please check the name is correct.</p>
+  </div>
