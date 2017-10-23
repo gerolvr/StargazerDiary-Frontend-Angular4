@@ -1,12 +1,14 @@
   <div class="container">
     <h2>Search an astronomical object</h2>
-    <form class="form-horizontal" (ngSubmit)="onSubmit()">
+    <form class="form-horizontal" (ngSubmit)="onSubmit()" #form="ngForm">
       <div class="col-sm-4">
-        <input type="text" [(ngModel)]="astroObjectName" class="form-control" placeholder="Astronomical object name" name="astroObjectName"/>
+        <input type="text" [(ngModel)]="astroObjectName"
+        class="form-control" placeholder="Astronomical object name"
+        name="astroObjectName" ngModel required #nameCtrl="ngModel"/>
       </div>
       <div class="form-group">
         <div class="col-sm-4">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button class="btn btn-primary" type="submit" [disabled]="form.invalid || (form.value.astroObjectName && form.value.astroObjectName.trim().length === 0)">Submit</button>
         </div>
       </div>
     </form>

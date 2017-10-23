@@ -15,7 +15,7 @@ export class AstrodataService {
 
   newSearch(astronomicalObject) {
     this.newSearchStartedSubject.next();
-    this.http.get(this.url + '/search/' + astronomicalObject, this.generateHeaders()).subscribe(
+    this.http.get(this.url + 'search/' + astronomicalObject, this.generateHeaders()).subscribe(
       resp => {
         this.astroDataSearchResult = resp.json();
         this.newSearchResultSubject.next(this.astroDataSearchResult);
