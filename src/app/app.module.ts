@@ -24,16 +24,18 @@ import { AddeditobservationsComponent } from './addeditobservations/addeditobser
 import { AstrodataComponent } from './astrodata/astrodata.component';
 import { AstrodataresultComponent } from './astrodataresult/astrodataresult.component';
 
+import { AuthGuardService } from './services/authguard.service';
+
 const routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'telescopes', component: TelescopeComponent},
-  { path: 'addTelescope', component: AddedittelescopeComponent},
-  { path: 'editTelescope/:id', component: AddedittelescopeComponent},
-  { path: 'observations', component: ObservationsComponent},
-  { path: 'addObservation', component: AddeditobservationsComponent},
-  { path: 'editObservation/:id', component: AddeditobservationsComponent},
-  { path: 'astrodata', component: AstrodataComponent},
+  { path: 'telescopes', component: TelescopeComponent, canActivate: [AuthGuardService] },
+  { path: 'addTelescope', component: AddedittelescopeComponent, canActivate: [AuthGuardService] },
+  { path: 'editTelescope/:id', component: AddedittelescopeComponent, canActivate: [AuthGuardService] },
+  { path: 'observations', component: ObservationsComponent, canActivate: [AuthGuardService] },
+  { path: 'addObservation', component: AddeditobservationsComponent, canActivate: [AuthGuardService] },
+  { path: 'editObservation/:id', component: AddeditobservationsComponent, canActivate: [AuthGuardService] },
+  { path: 'astrodata', component: AstrodataComponent, canActivate: [AuthGuardService] },
 ];
 
 @NgModule({
@@ -67,7 +69,8 @@ const routes = [
     TelescopeService,
     ObservationService,
     DatePipe,
-    AstrodataService
+    AstrodataService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

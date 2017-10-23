@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../services/login.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,13 +12,18 @@ export class LoginComponent implements OnInit {
   identifiers = { 'username': '', 'password': '' };
   loggedIn = false;
   authenticationFailed = false;
+  returnUrl: string;
 
-  constructor( private loginService: LoginService,
+  constructor(
+    private loginService: LoginService,
+    private route: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit() {
     this.loggedIn = this.loginService.isCurrentlyLoggedIn();
     this.loginService.getLoggedInStatusUpdate().subscribe(message => { this.loggedIn = message; });
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   onSubmit() {
@@ -28,6 +34,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('SGD_username', this.identifiers.username);
         this.authenticationFailed = false;
         this.loginService.onLoginSuccess();
+        this.router.navigate([this.returnUrl]);
       },
       err => {
         console.log(err);
