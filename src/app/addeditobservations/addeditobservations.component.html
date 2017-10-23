@@ -8,7 +8,7 @@
     <h1>Add a new observation</h1>
   </ng-template>
 
-  <form class="form-horizontal" (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <form class="form-horizontal" (ngSubmit)="onSubmit()" #form="ngForm">
     <div *ngIf="getErrorMessage" class="alert alert-danger">
       <p>{{getErrorMessage}}</p>
     </div>
