@@ -1,5 +1,11 @@
 <div class="container">
-<h2>Add new Telescope</h2>
+  <div *ngIf="editTelescope; else addTelescopeTitle">
+    <h1>Edit telescope</h1>
+  </div>
+
+  <ng-template #addTelescopeTitle>
+    <h1>Add a new telescope</h1>
+  </ng-template>
 <form class="form-horizontal" (ngSubmit)="onSubmit(form)" #form="ngForm">
 	<div *ngIf="getErrorMessage" class="alert alert-danger">
 		<p>{{getErrorMessage}}</p>

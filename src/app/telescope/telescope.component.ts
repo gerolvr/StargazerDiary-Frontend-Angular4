@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TelescopeService } from '../services/telescope.service';
 import { Telescope } from '../models/telescope';
-import { Params, ActivatedRoute, Router } from '@angular/router';
+import { Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-telescope',

@@ -9,9 +9,10 @@ import { Params, ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./addedittelescope.component.css']
 })
 export class AddedittelescopeComponent implements OnInit {
-getErrorMessage: any = null;
+  getErrorMessage: any = null;
   telescopeId: number = -1;
   telescope: Telescope = new Telescope();
+  editTelescope = false;
 
   constructor(
     private telescopeService: TelescopeService,
@@ -25,6 +26,7 @@ getErrorMessage: any = null;
     });
     if (this.telescopeId > 0) {
       // Editing a telescope
+      this.editTelescope = true;
       // console.log('telescopeId' + this.telescopeId);
       this.telescopeService.getTelescope(this.telescopeId).subscribe(
         res => {
@@ -32,8 +34,9 @@ getErrorMessage: any = null;
           this.telescope = res.json();
         },
         error => {
-          this.getErrorMessage = error._body;
+          // this.getErrorMessage = error._body;
           console.log(error._body);
+          this.router.navigate(['/telescopes']);
         }
       );
     } else {
