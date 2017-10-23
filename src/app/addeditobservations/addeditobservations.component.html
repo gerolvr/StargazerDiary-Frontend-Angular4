@@ -1,0 +1,49 @@
+<div class="container">
+
+  <div *ngIf="editObservation; else addObservationTitle">
+    <h1>Edit observation</h1>
+  </div>
+
+  <ng-template #addObservationTitle>
+    <h1>Add a new observation</h1>
+  </ng-template>
+
+  <form class="form-horizontal" (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <div *ngIf="getErrorMessage" class="alert alert-danger">
+      <p>{{getErrorMessage}}</p>
+    </div>
+    <div class="form-group">
+      <label for="inputObservationName" class="col-sm-2 control-label">Observation Name*</label>
+      <div class="col-sm-10">
+        <input type="text"
+          [(ngModel)]="observation.name"
+          [ngClass]="(form.value.observationName && form.value.observationName.trim().length === 0) ? 'invalidField' : 'form-control'" class="form-control"
+        name="observationName" id="observationName" placeholder="Observation Name"
+        ngModel required #nameCtrl="ngModel"/>
+      <span class="help-block" *ngIf="nameCtrl.invalid && nameCtrl.touched || (form.value.observationName && form.value.observationName.trim().length === 0)">Please enter an observation name.</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputObservationMaker" class="col-sm-2 control-label">Observation Date</label>
+      <div class="col-sm-10">
+        <mat-input-container>
+          <input matInput disabled name="date1" [ngModel]="someDate | date:'dd/MM/y'">
+          <input matInput name="date2" [hidden]='true' [(ngModel)]="someDate" [matDatepicker]="datepicker">
+          <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+        </mat-input-container>
+        <mat-datepicker #datepicker></mat-datepicker>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputObservationReport" class="col-sm-2 control-label">Observation Report</label>
+      <div class="col-sm-10">
+        <textarea name="report" class="form-control" [(ngModel)]="observation.report" rows="3" placeholder="Observation report"></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button class="btn btn-primary" type="submit" [disabled]="form.invalid || (form.value.observationName && form.value.observationName.trim().length === 0)">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>

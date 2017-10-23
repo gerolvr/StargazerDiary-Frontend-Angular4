@@ -1,0 +1,27 @@
+<div class="container">
+
+  <h1>My observations</h1>
+
+  <div>
+    <table class="table table-hover">
+      <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Report</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let observation of observations">
+        <td>{{observation.name}}</td>
+        <td>{{observation.date}}</td>
+        <td style="white-space: pre-line">{{observation.report}}</td>
+        <td>
+          <div sec:authorize="isAuthenticated()" class="btn-group" role="group" aria-label="...">
+            <a class="btn btn-primary" (click)="onSelectEdit(observation)" style="cursor: pointer">Edit</a>
+            <a class="btn btn-warning" (click)="onSelectDelete(observation)" style="cursor: pointer">Delete</a>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <a class="btn btn-success" routerLink="/addObservation">Add an observation</a>
+</div>
