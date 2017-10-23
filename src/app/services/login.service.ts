@@ -29,8 +29,6 @@ export class LoginService {
       'x-auth-token': localStorage.getItem('SGD_xAuthToken') ? localStorage.getItem('SGD_xAuthToken') : ''
     });
 
-    console.log(localStorage.getItem('SGD_xAuthToken'));
-    console.log('URL: ' + url);
     return this.http.get(url, { headers: headers });
   }
 
