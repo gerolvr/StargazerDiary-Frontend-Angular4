@@ -2,44 +2,42 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class LoginService {
-
+  private url = environment.host + '/api/v1/';
   private userChangedSubject = new Subject<string>();
   private isLoggedInSubject = new Subject<boolean>();
 
   constructor(private http: Http) { }
 
   sendIdentifiers(username: string, password: string) {
-    const url = 'http://localhost:8080/api/v1/user/getToken';
     const encodedCredentials = btoa(username + ':' + password);
     const basicHeader = 'Basic ' + encodedCredentials;
     const headers = new Headers({
       'Content-Type': 'application/x-www-form-urlencoded',
       'Authorization': basicHeader
     });
-    return this.http.get(url, { headers: headers });
+    return this.http.get(this.url + 'user/getToken', { headers: headers });
 
   }
 
   checkSession() {
-    const url = 'http://localhost:8080/api/v1/user/checkSession';
     const headers = new Headers({
       'x-auth-token': localStorage.getItem('SGD_xAuthToken') ? localStorage.getItem('SGD_xAuthToken') : ''
     });
 
-    return this.http.get(url, { headers: headers });
+    return this.http.get(this.url + 'user/checkSession', { headers: headers });
   }
 
   logout() {
-    const url = 'http://localhost:8080/api/v1/user/logout';
     console.log('logging out');
     const headers = new Headers({
       'x-auth-token': localStorage.getItem('SGD_xAuthToken')
     });
 
-    return this.http.post(url, '', { headers: headers });
+    return this.http.post(this.url + 'user/logout', '', { headers: headers });
   }
 
   isCurrentlyLoggedIn() {

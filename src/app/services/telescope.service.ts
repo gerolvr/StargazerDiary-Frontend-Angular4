@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Telescope } from '../models/telescope';
 import 'rxjs/add/operator/map';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class TelescopeService {
 
-  private url= 'http://localhost:8080/api/v1/telescopes/';
+  private url= environment.host + '/api/v1/telescopes/';
 
   constructor(private http: Http) { }
 

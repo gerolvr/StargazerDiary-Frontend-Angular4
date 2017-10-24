@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observation } from '../models/observation';
 import 'rxjs/add/operator/map';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class ObservationService {
-private url= 'http://localhost:8080/api/v1/observations/';
+private url= environment.host + '/api/v1/observations/';
 
   constructor(private http: Http) { }
 

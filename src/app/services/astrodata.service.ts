@@ -3,10 +3,11 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { AstroDataSearchResult } from '../models/astroDataSearchResult';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AstrodataService {
-  private url = 'http://localhost:8080/api/v1/astrodata/';
+  private url = environment.host + '/api/v1/astrodata/';
   private newSearchResultSubject = new Subject<AstroDataSearchResult>();
   private newSearchStartedSubject = new Subject<void>();
   private astroDataSearchResult: AstroDataSearchResult;
