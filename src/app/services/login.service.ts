@@ -23,6 +23,14 @@ export class LoginService {
 
   }
 
+  sendRegistrationIdentifiers(body: Object) {
+    // create authorization header for POST
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post(this.url + 'registration/register', JSON.stringify(body), { headers: headers });
+  }
+
   checkSession() {
     const headers = new Headers({
       'x-auth-token': localStorage.getItem('SGD_xAuthToken') ? localStorage.getItem('SGD_xAuthToken') : ''

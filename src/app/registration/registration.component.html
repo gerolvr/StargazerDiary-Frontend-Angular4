@@ -1,10 +1,17 @@
 <div class="container">
-  <h2>Please login or <a routerLink="/register">register </a>to access your data</h2>
-  <div *ngIf="!loggedIn">
+  <h2>Register</h2>
+  <div *ngIf="registrationSuccessMessage" class="alert alert-success" role="alert">
+      {{registrationSuccessMessage}}
+  </div>
+    <div *ngIf="registrationFailedMessage" class="alert alert-danger" role="alert">
+      {{registrationFailedMessage}}
+  </div>
+
+  <div *ngIf="!registrationSuccessMessage">
     <form (ngSubmit)="onSubmit()" #form="ngForm">
       <div class="form-group">
         <label for="name">User Name</label>
-        <input type="text" id="username" name="username" class="form-control" [(ngModel)]="identifiers.username" placeholder="Your Username" required #nameCtrl="ngModel">
+        <input type="text" id="username" name="username" class="form-control" [(ngModel)]="identifiers.name" placeholder="Your Username" required #nameCtrl="ngModel">
         <span class="help-block" *ngIf="nameCtrl.invalid && nameCtrl.touched">Please enter a user name!</span>
       </div>
       <div class="form-group">
@@ -12,11 +19,7 @@
         <input type="password" id="password" name="password" class="form-control" [(ngModel)]="identifiers.password" placeholder="Your Password" required #pwdCtrl="ngModel">
         <span class="help-block" *ngIf="pwdCtrl.invalid && pwdCtrl.touched">Please enter a password!</span>
       </div>
-      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Login</button>
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Register</button>
     </form>
   </div>
-  <div *ngIf="loggedIn">
-    <h2>You are logged in.</h2>
-  </div>
-  <div *ngIf="authenticationFailed" class="alert alert-danger">Could not log in, please verify username and password</div>
 </div>

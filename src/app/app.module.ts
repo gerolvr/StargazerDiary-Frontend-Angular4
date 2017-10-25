@@ -25,10 +25,12 @@ import { AstrodataComponent } from './astrodata/astrodata.component';
 import { AstrodataresultComponent } from './astrodataresult/astrodataresult.component';
 
 import { AuthGuardService } from './services/authguard.service';
+import { RegistrationComponent } from './registration/registration.component';
 
 const routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegistrationComponent },
   { path: 'telescopes', component: TelescopeComponent, canActivate: [AuthGuardService] },
   { path: 'addTelescope', component: AddedittelescopeComponent, canActivate: [AuthGuardService] },
   { path: 'editTelescope/:id', component: AddedittelescopeComponent, canActivate: [AuthGuardService] },
@@ -49,7 +51,8 @@ const routes = [
     ObservationsComponent,
     AddeditobservationsComponent,
     AstrodataComponent,
-    AstrodataresultComponent
+    AstrodataresultComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
