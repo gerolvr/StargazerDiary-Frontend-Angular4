@@ -27,10 +27,6 @@ export class TelescopeComponent implements OnInit {
      });
   }
 
-  onSelectEdit(telescope: Telescope) {
-      this.router.navigate(['/editTelescope', telescope.id]);
-  }
-
   onSelectDelete(telescope: Telescope) {
     this.telescopeService.deleteTelescope(telescope.id).subscribe(
       res => {

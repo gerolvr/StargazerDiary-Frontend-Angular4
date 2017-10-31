@@ -15,8 +15,8 @@
         <td>{{observation.date}}</td>
         <td style="white-space: pre-line">{{observation.report}}</td>
         <td>
-          <div sec:authorize="isAuthenticated()" class="btn-group" role="group" aria-label="...">
-            <a class="btn btn-primary" (click)="onSelectEdit(observation)" style="cursor: pointer">Edit</a>
+          <div class="btn-group" role="group" aria-label="...">
+            <a class="btn btn-primary" [routerLink]="['/editObservation', observation.id]" style="cursor: pointer">Edit</a>
             <a class="btn btn-warning" (click)="onSelectDelete(observation)" style="cursor: pointer">Delete</a>
           </div>
         </td>

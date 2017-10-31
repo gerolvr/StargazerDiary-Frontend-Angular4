@@ -27,10 +27,6 @@ export class ObservationsComponent implements OnInit {
      });
   }
 
-  onSelectEdit(observation: Observation) {
-      this.router.navigate(['/editObservation', observation.id]);
-  }
-
   onSelectDelete(observation: Observation) {
     this.observationService.deleteObservation(observation.id).subscribe(
       res => {

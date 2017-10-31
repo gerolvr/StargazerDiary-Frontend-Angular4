@@ -13,8 +13,8 @@
       </div>
     </form>
     <p>i.e. <a (click)="search('M42')" style="cursor: pointer">M42</a> (<a href="https://en.wikipedia.org/wiki/List_of_Messier_objects">Messier Catalog</a>)
-      , <a (click)="search('NGC2174')" style="cursor: pointer">NGC2174</a> (<a href="https://en.wikipedia.org/wiki/List_of_NGC_objects">NGC Catalog</a>),
-      Moon, Mars</p>
+      , <a (click)="search('NGC2174')" style="cursor: pointer">NGC2174</a> (<a href="https://en.wikipedia.org/wiki/List_of_NGC_objects">NGC Catalog</a>)
+    </p>
   </div>
 <div class="container" *ngIf=submitedAstroObjectName>
 <app-astrodataresult [search]="submitedAstroObjectName"></app-astrodataresult>
