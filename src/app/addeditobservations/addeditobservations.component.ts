@@ -11,7 +11,7 @@ import { Params, ActivatedRoute, Router } from '@angular/router';
 export class AddeditobservationsComponent implements OnInit {
   getErrorMessage: any = null;
   observation: Observation = new Observation();
-  someDate: Date = new Date();
+  someDate: Date;
   observationId: number = -1;
   editObservation = false;
 
@@ -33,8 +33,10 @@ export class AddeditobservationsComponent implements OnInit {
         result => {
           this.getErrorMessage = null;
           this.observation = result.json();
-          const e = this.observation.date.split('/');
-          this.someDate = new Date(e[2] + '/' + e[1] + '/' + e[0]);
+          if(this.observation.date !== null) {
+            const e = this.observation.date.split('/');
+            this.someDate = new Date(e[2] + '/' + e[1] + '/' + e[0]);
+          }
         },
         err => {
           // this.getErrorMessage = err._body;
