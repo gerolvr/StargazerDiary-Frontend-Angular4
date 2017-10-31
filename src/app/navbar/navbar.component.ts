@@ -28,8 +28,9 @@ export class NavbarComponent implements OnInit {
       error => {
         console.log('CheckSession failed');
         console.log(error);
-        // Not logged in anymore, clean up stored data
+        // Not logged in anymore, clean up stored data and redirect to home
         this.loginService.onLogoutSuccess();
+        this.router.navigate(['/']);
       }
     );
   }
