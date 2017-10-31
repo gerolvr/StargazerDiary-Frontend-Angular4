@@ -24,7 +24,7 @@ export class TelescopeService {
   }
 
   deleteTelescope(id: number) {
-    return this.http.get(this.url + 'delete/' + id, this.generateHeaders());
+    return this.http.delete(this.url + 'delete/' + id, this.generateHeaders());
   }
 
   private generateJSONHeaders() {

@@ -23,7 +23,7 @@ private url= environment.host + '/api/v1/observations/';
   }
 
   deleteObservation(id: number) {
-    return this.http.get(this.url + 'delete/' + id, this.generateHeaders());
+    return this.http.delete(this.url + 'delete/' + id, this.generateHeaders());
   }
 
   private generateJSONHeaders() {
