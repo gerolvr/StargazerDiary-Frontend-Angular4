@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService} from '../services/login.service';
+import { Router } from '@angular/router';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-registration',
@@ -8,14 +9,19 @@ import { LoginService} from '../services/login.service';
 })
 export class RegistrationComponent implements OnInit {
 
-  registered;
   registrationSuccessMessage;
   registrationFailedMessage;
   identifiers = {'name' : '', 'password': ''};
 
-  constructor(private loginService: LoginService) { }
+  constructor(
+    private loginService: LoginService,
+    private router: Router) { }
 
   ngOnInit() {
+
+    if(this.loginService.isCurrentlyLoggedIn()){
+      this.router.navigate(['/']);
+    }
   }
 
   onSubmit() {
@@ -41,6 +47,7 @@ export class RegistrationComponent implements OnInit {
       },
       loginerr => {
         console.log(loginerr);
+        this.registrationSuccessMessage = null;
         this.registrationFailedMessage = loginerr.text();
       });
   }

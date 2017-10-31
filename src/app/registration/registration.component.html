@@ -12,14 +12,14 @@
       <div class="form-group">
         <label for="name">User Name</label>
         <input type="text" id="username" name="username" class="form-control" [(ngModel)]="identifiers.name" placeholder="Your Username" required #nameCtrl="ngModel">
-        <span class="help-block" *ngIf="nameCtrl.invalid && nameCtrl.touched">Please enter a user name!</span>
+        <span class="help-block" *ngIf="nameCtrl.invalid && nameCtrl.touched || (form.value.username && form.value.username.trim().length === 0)">Please enter a user name!</span>
       </div>
       <div class="form-group">
-        <label for="side">Password</label>
+        <label for="password">Password</label>
         <input type="password" id="password" name="password" class="form-control" [(ngModel)]="identifiers.password" placeholder="Your Password" required #pwdCtrl="ngModel">
         <span class="help-block" *ngIf="pwdCtrl.invalid && pwdCtrl.touched">Please enter a password!</span>
       </div>
-      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Register</button>
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid  || (form.value.username && form.value.username.trim().length === 0)">Register</button>
     </form>
   </div>
 </div>
